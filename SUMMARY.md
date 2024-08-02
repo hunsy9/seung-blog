@@ -1,3 +1,7 @@
 # Table of contents
 
-* [seung-blog](README.md)
+* [hunsy's blog](README.md)
+
+## Group 1
+
+* [InStorageComputing](group-1/instoragecomputing.md)
