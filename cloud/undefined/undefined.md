@@ -2,6 +2,22 @@
 description: >-
   나는 군대를 전역하고 Lenovo IdeaPad 노트북을 사서 잘쓰고 있었다. 그 노트북은 1년 전 맥북을 사기 전까지만해도 내 주력
   노트북이었지만 이제는 맥북에 밀려 고물 신세가 되었다.
+cover: ../../.gitbook/assets/laptop_thumbnail.jpeg
+coverY: 0
+layout:
+  cover:
+    visible: true
+    size: hero
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
 # 노트북으로 리눅스 서버 구축하기
