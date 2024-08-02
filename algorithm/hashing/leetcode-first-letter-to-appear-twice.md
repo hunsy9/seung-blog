@@ -1,3 +1,22 @@
+---
+cover: ../../.gitbook/assets/leetcode.png
+coverY: 0
+layout:
+  cover:
+    visible: true
+    size: hero
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
 # \[LeetCode] First Letter to Appear Twice
 
 **문제 설명**: Given a string `s` consisting of lowercase English letters, return the first letter to appear twice.

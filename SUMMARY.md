@@ -22,6 +22,6 @@
 
 ## 📐 Algorithm
 
-* [LeetCode](algorithm/leetcode/README.md)
-  * [\[LeetCode\] First Letter to Appear Twice](algorithm/leetcode/leetcode-first-letter-to-appear-twice.md)
+* [Hashing](algorithm/hashing/README.md)
+  * [\[LeetCode\] First Letter to Appear Twice](algorithm/hashing/leetcode-first-letter-to-appear-twice.md)
 * [Untitled](algorithm/untitled.md)
