@@ -35,3 +35,5 @@
   * [\[LeetCode\] First Letter to Appear Twice](algorithm/hashing/leetcode-first-letter-to-appear-twice.md)
 * [Two Pointer](algorithm/two-pointer/README.md)
   * [\[LeetCode\] Counting Elements](algorithm/two-pointer/leetcode-counting-elements.md)
+* [Tree](algorithm/tree/README.md)
+  * [\[LeetCode\] Minimum Depth of Binary Tree](algorithm/tree/leetcode-minimum-depth-of-binary-tree.md)
