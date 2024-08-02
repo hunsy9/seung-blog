@@ -1,6 +1,6 @@
 ---
-description: 안녕하세요 개발자 유승훈입니다.
-cover: .gitbook/assets/thumbnail_blog (2).png
+description: In Storage Computing 환경 구축을 위한 SPDK를 탐구합니다.
+cover: ../.gitbook/assets/spdk (1).png
 coverY: 0
 layout:
   cover:
@@ -18,7 +18,5 @@ layout:
     visible: true
 ---
 
-# hunsy's log
-
-**Backend, Linux, Cloud**에 관심이 많은 학생 개발자입니다.
+# SPDK
 
