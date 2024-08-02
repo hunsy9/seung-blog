@@ -1,6 +1,6 @@
 ---
 description: 안녕하세요 개발자 유승훈입니다.
-cover: .gitbook/assets/thumbnail_blog (2).png
+cover: .gitbook/assets/thumbnail_blog (1).png
 coverY: 0
 layout:
   cover:
