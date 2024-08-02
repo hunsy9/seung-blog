@@ -15,8 +15,11 @@
 
 ## ☁️ Cloud
 
+* [Page](cloud/page.md)
 * [자취방 클라우드](cloud/undefined.md)
 
 ## 📐 Algorithm
 
-* [LeetCode](algorithm/leetcode.md)
+* [LeetCode](algorithm/leetcode/README.md)
+  * [\[LeetCode\] First Letter to Appear Twice](algorithm/leetcode/leetcode-first-letter-to-appear-twice.md)
+* [Untitled](algorithm/untitled.md)
