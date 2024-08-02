@@ -33,4 +33,5 @@
 
 * [Hashing](algorithm/hashing/README.md)
   * [\[LeetCode\] First Letter to Appear Twice](algorithm/hashing/leetcode-first-letter-to-appear-twice.md)
-* [Untitled](algorithm/untitled.md)
+* [Two Pointer](algorithm/two-pointer/README.md)
+  * [\[LeetCode\] Counting Elements](algorithm/two-pointer/leetcode-counting-elements.md)
