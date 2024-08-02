@@ -16,7 +16,8 @@
 ## ☁️ Cloud
 
 * [Page](cloud/page.md)
-* [자취방 클라우드](cloud/undefined.md)
+* [자취방 클라우드](cloud/undefined/README.md)
+  * [\[자취방 클라우드\] 노트북으로 리눅스 서버 구축하기](cloud/undefined/undefined.md)
 
 ## 📐 Algorithm
 
