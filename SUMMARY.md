@@ -15,6 +15,7 @@
     * [NVMEoF는 무엇일까?](linux/driver/nvme-over-fabric/nvmeof.md)
     * [NVMeoF TCP 환경 구축하기](linux/driver/nvme-over-fabric/nvmeof-tcp.md)
     * [NVMeOF TCP Target 코드를 분석해보자](linux/driver/nvme-over-fabric/nvmeof-tcp-target.md)
+* [Shell Script](linux/shell-script.md)
 
 ## ☁️ Cloud
 
@@ -27,7 +28,7 @@
 ## 🌑 Backend
 
 * [Spring boot](backend/spring-boot.md)
-* [Django](backend/django.md)
+* [Nginx](backend/nginx.md)
 
 ## 📐 Algorithm
 
