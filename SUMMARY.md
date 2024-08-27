@@ -15,20 +15,16 @@
     * [NVMEoF는 무엇일까?](linux/driver/nvme-over-fabric/nvmeof.md)
     * [NVMeoF TCP 환경 구축하기](linux/driver/nvme-over-fabric/nvmeof-tcp.md)
     * [NVMeOF TCP Target 코드를 분석해보자](linux/driver/nvme-over-fabric/nvmeof-tcp-target.md)
-* [Shell Script](linux/shell-script.md)
 
 ## ☁️ Cloud
 
+* [Cloud Native](cloud/cloud-native/README.md)
+  * [사설 레지스트리를 구축한 이유](cloud/cloud-native/undefined.md)
+  * [HTTPS Harbor 사설 레지스트리 구축하기](cloud/cloud-native/https-harbor.md)
 * [자취방 클라우드](cloud/undefined.md)
   * [노트북으로 리눅스 서버 구축하기](cloud/undefined/undefined.md)
   * [홈서버 네트워크 기초 구성하기](cloud/undefined/undefined-1.md)
   * [미니 PC도 서버로 사용해보자](cloud/undefined/pc.md)
-* [Docker](cloud/docker.md)
-
-## 🌑 Backend
-
-* [Spring boot](backend/spring-boot.md)
-* [Nginx](backend/nginx.md)
 
 ## 📐 Algorithm
 
