@@ -134,7 +134,7 @@ Harbor를 443포트로 두고 https로 접속해서 사용하지 않고, 업스�
 ```bash
 # Uncomment external_url if you want to enable external proxy
 # And when it enabled the hostname will no longer used
-external_url: https://registry.copl-dev.site
+external_url: [리버스 프록시 서버 네임]
 ```
 
 harbor.yml 구성에 external\_url에 본인의 프록시 서버 네임을 반드시 입력해야 사설 레지스트리에 정상적으로 로그인이 가능하다.
