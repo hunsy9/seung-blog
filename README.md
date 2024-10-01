@@ -20,5 +20,5 @@ layout:
 
 # hunsy's log
 
-**Backend, Linux, Cloud**에 관심이 많은 학생 개발자입니다.
+**Python, Linux, Cloud**에 관심이 많은 학생 개발자입니다.
 
