@@ -8,11 +8,11 @@ description: 가용할 수 있는 물리 인프라 자원은 워크스테이션 
 
 제가 사용 가능한 물리적 자원은 **교내 워크스테이션 1대**였습니다.
 
-<figure><img src="../.gitbook/assets/스크린샷 2024-10-02 오전 1.51.49.png" alt="" width="375"><figcaption><p>환경 별로 다른 도메인</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2024-10-02 오전 1.51.49.png" alt="" width="375"><figcaption><p>환경 별로 다른 도메인</p></figcaption></figure>
 
 따라서, 단일 호스트에 운영 및 테스트 환경 구축이 필요하였으며, &#x20;
 
-<figure><img src="../.gitbook/assets/스크린샷 2024-10-02 오전 1.54.49.png" alt="" width="295"><figcaption><p>각 서비스 환경으로 리버스 프록시</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2024-10-02 오전 1.54.49.png" alt="" width="295"><figcaption><p>각 서비스 환경으로 리버스 프록시</p></figcaption></figure>
 
 위처럼 80/443 포트에 바인딩 해놓은 인그레스 Nginx에서 들어오는 트래픽을&#x20;
 
@@ -36,7 +36,7 @@ description: 가용할 수 있는 물리 인프라 자원은 워크스테이션 
 
 하지만 이렇게 구현할 시,&#x20;
 
-<figure><img src="../.gitbook/assets/스크린샷 2024-10-02 오전 2.03.27.png" alt="" width="339"><figcaption><p>서버 내 백도어라도 있어서 패킷이 탈취된다면? Oh-no..</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2024-10-02 오전 2.03.27.png" alt="" width="339"><figcaption><p>서버 내 백도어라도 있어서 패킷이 탈취된다면? Oh-no..</p></figcaption></figure>
 
 **https(443)로 들어온 트래픽을 http로 변환**하여 각 업스트림 서버에 전달해야 한다는 문제가 있었고,\
 내/외부 통신 모두에 https를 사용하지 못한다면 **보안적 취약점이 발생할 수 있다고 생각**하였습니다.
@@ -47,7 +47,7 @@ description: 가용할 수 있는 물리 인프라 자원은 워크스테이션 
 
 
 
-<figure><img src="../.gitbook/assets/스크린샷 2024-10-02 오전 2.09.25.png" alt="" width="563"><figcaption><p>서비스 내부 아키텍처</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2024-10-02 오전 2.09.25.png" alt="" width="563"><figcaption><p>서비스 내부 아키텍처</p></figcaption></figure>
 
 End-To-End 암호화를 달성하기 위해선
 

@@ -8,12 +8,13 @@ description: 변경사항이 감지된 컴포넌트만 조건부로 빌드하고
 
 저희 팀은 개발 초기엔 프론트엔드, 백엔드를 각각 레포지토리를 따로 만들어 개발 중이었습니다.
 
-관리의 불편함을 느끼고 이를 r이 있습니다.
+관리의 불편함을 느끼고 이를 **모노레포로 전환**한 경험이 있습니다.
 
 따라서 지금 현재 프로젝트의 구조는 아래와 같은데요.
 
 ```sh
 Code Place 프로젝트
+.
 ├── frontend # 프론트엔드 디렉토리
 ├── backend # Django API 서버 디렉토리
 ├── scheduler # Django APScheduler 디렉토리
@@ -31,7 +32,7 @@ CI 파이프라인을 짤 때, 커밋을 분류하여 조건부로 CI 파이프�
 
 ***
 
-<figure><img src="../.gitbook/assets/스크린샷 2024-10-02 오후 3.54.09.png" alt=""><figcaption><p>ㅊ</p></figcaption></figure>
+
 
 
 
@@ -67,7 +68,7 @@ detect-changes-by-component:
 ```
 {% endcode %}
 
-### R lJaoabs에서 발생할 수 있는 문제
+### Release Job에서 발생할 수 있는 문제
 
 ***
 
@@ -79,3 +80,16 @@ detect-changes-by-component:
 
 ***
 
+
+
+### 결과 및 알게된 점
+
+***
+
+<figure><img src="../../.gitbook/assets/스크린샷 2024-10-02 오후 4.01.21.png" alt="" width="375"><figcaption><p>조건부 빌드 성공!</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/스크린샷 2024-10-02 오후 3.54.09.png" alt=""><figcaption><p>Release 1.0.0 성공!</p></figcaption></figure>
+
+> 모노레포로 전환할 때까지만 해도, 너무 좋은 아키텍처라고 생각했지만 역시 모든 것엔 trade off가 있다.
+
+조건부빌드 성공
