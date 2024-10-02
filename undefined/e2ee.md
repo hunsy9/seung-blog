@@ -51,14 +51,14 @@ description: 가용할 수 있는 물리 인프라 자원은 워크스테이션 
 
 End-To-End 암호화를 달성하기 위해선
 
-아래의 **서비스 아키텍처의 게이트웨이 역할을 하는 Nginx에도 SSL 설정**을 해주어야 했습니다.
+위 **서비스 아키텍처의 게이트웨이 역할을 하는 Nginx에도 SSL 설정**을 해주어야 했습니다.
 
 문제는 이 서비스를 2개를 생성해서 하나는 운영 환경, 나머지 하나는 테스트 환경으로 써야했기에,
 
 두 개의 nginx.conf가 필요한 상황이었습니다.
 
 ```nginx
-# nginx.conf 1
+# nginx.conf - 운영
 server {
       listen 1443 ssl default_server;
       server_name code.pusan.ac.kr;
@@ -69,7 +69,7 @@ server {
       include https_locations.conf;
 }
 
-# nginx.conf 2
+# nginx.conf - 테스트
 server {
       listen 1443 ssl default_server;
       server_name copl-dev.site;
@@ -81,20 +81,23 @@ server {
 }
 ```
 
-위처럼 nginx 구성파일을 각각 따로 생성해서 넣어주면 되겠지만.. \
-그건 너무 코드의 중복이 많이 일어날 것이라 생각했습니다.
+위처럼 nginx 구성파일을 각각 따로 생성해서 넣어주면 되겠지만, 코드의 중복이 많이 일어날 것이라 생각했습니다.
 
-\
-따라서 **server\_name 디렉티브의 value값을 변수화**시키는 방법을 알아보던 중, Linux의 **sed 명령과 사용법**에 대해서 알게 되었습니다.
+따라서 server\_name의 변수화가 필요한 시점이었습니다.
 
 ### 문제 해결 방법
 
 ***
 
-“프론트엔드 컨테이너 nginx의 구성에 도메인 명을 변수화해두고, 해당 인증서의 경로 이름을 **동적으로 변경**하면 어떨까?” 라는 생각을 시작했고,&#x20;
+따라서 **server\_name 디렉티브의 value값을 변수화**시키는 방법을 알아보던 중,&#x20;
 
 \
-위 생각을 실현하기 위해선 다음과 같은 과정들이 필요했습니다.
+“프론트엔드 컨테이너 nginx의 구성에 도메인 명을 변수화해두고, 도메인 이름을 **동적으로 변경**하면 어떨까?”&#x20;
+
+라는 생각을 하게되었습니다.
+
+\
+위 생각을 실현하기 위해 먼저 프론트엔드 nginx 구성파일부터 개선해보았습니다.
 
 1\. 프론트엔드 nginx 구성파일에서, **server\_name 디렉티브를 \_\_SERVER\_NAME\_\_으로 설정**(변수화)
 
@@ -112,16 +115,17 @@ server {
 }
 ```
 
-2\. 분리된 운영/테스트 환경(YAML)에, 각각 운영/테스트용 SSL 인증서 경로를 볼륨으로 설정
+또한 서로 다른 도메인을 볼륨으로 넣어주기 위해,
 
-<pre class="language-yaml" data-title="" data-line-numbers><code class="lang-yaml"><strong># production 환경
-</strong><strong>services:
-</strong>  frontend:
+운영/테스트 환경(YAML)에 각각 운영/테스트용 SSL 인증서 경로를 볼륨으로 설정해주었습니다.
+
+<pre class="language-yaml" data-title="docker-compose.yml(test,prod))" data-line-numbers><code class="lang-yaml"><strong># production 환경
+</strong>frontend:
     image: registry.copl-dev.site/code-place-prod/frontend:latest
     ...
     volumes:
       - /etc/letsencrypt/live/운영도메인/인증서파일:/etc/letsencrypt/live/운영도메인/인증서파일:ro
-
+    
 # test 환경  
 frontend:
     image: registry.copl-dev.site/code-place-dev/frontend:latest
@@ -130,29 +134,47 @@ frontend:
             - /etc/letsencrypt/live/테스트도메인/인증서파일:/etc/letsencrypt/live/테스트도메인/인증서파일:ro
 </code></pre>
 
-3\. 프론트엔드 Dockerfile의 전역 빌드 인수를 SERVER\_NAME으로 설정하고 CI Action 실행 시, 주입하여 빌드
+\
+이젠 프론트엔드 이미지를 빌드할 때, 이미지가 사용될 가상호스트 도메인을 지정해주는 작업이 필요하였습니다.
+
+당시 프론트엔드 Dockerfile은 멀티스테이지 빌드를 사용 중이었습니다.\
+**첫 번째 스테이지:** npm build 스테이지
+
+**두 번째 스테이지:** nginx로 빌드된 정적파일을 복사하고 실행하는 스테이지
+
+nginx.conf를 구성하는 과정은 두 번째 스테이지에서 이루어졌기에,&#x20;
+
+Dockerfile의 전역 빌드 인수를 SERVER\_NAME으로 설정하고 이를 두번째 스테이지에서 환경변수로 주입하였습니다.
 
 <pre class="language-docker" data-title="Dockerfile(frontend)"><code class="lang-docker"><strong># 전역 빌드 인수
 </strong>ARG SERVER_NAME
 
-# Build stage
+# 빌드 스테이지
 FROM node:16 AS build-stage
 
 ...생략
 
-# Production stage
+# 프로덕션 스테이지
 FROM nginx:stable-alpine AS production-stage
 
 ARG SERVER_NAME # 다음 스테이지에서 전역 빌드 인수 사용
 ENV SERVER_NAME=$SERVER_NAME # 전역 빌드 인수를 환경 변수로 넣어줌
 
 ...생략
-
-ENTRYPOINT ["/app/deploy/entrypoint.sh"] # entrypoint 스크립트 실행
 </code></pre>
 
-4\. 프론트엔드 Dockerfile의 Entrypoint 스크립트 내부에서 sed 명령을 이용하여, SERVER\_NAME 인수를 각 서비스 컨테이너의 프론트엔드 nginx 구성 파일에서
+남은 작업은 초반에 변수화 시켜놓은 nginx.conf의 \_\_SERVER\_NAME\_\_을, 가상 호스트 도메인의 환경변수로 바꿔주는 작업이었습니다.
 
+{% code title="Dockerfile" %}
+```docker
+ENTRYPOINT ["/app/deploy/entrypoint.sh"] # entrypoint 스크립트 실행
+```
+{% endcode %}
+
+이는 컨테이너 실행 시  쉘스크립트에서 이루어질 작업이었기 때문에\
+
+
+{% code title="entrypoint.sh" %}
 ```sh
 #!/bin/sh
 
@@ -165,4 +187,28 @@ echo "Using SERVER_NAME: $SERVER_NAME"
 
 # 동적으로 server_name 변경
 sed -i "s/__SERVER_NAME__/$SERVER_NAME/g" /app/deploy/nginx/nginx.conf
+```
+{% endcode %}
+
+리눅스 명령어 중에 문자열을 교체하는 명령인 sed를 찾게 되었고, 위 과정처럼 동적으로 server\_name을 변경할 수 있었습니다.
+
+
+
+### 문제 해결 결과
+
+위 과정을 통해 인그레스 트래픽을 각각의 가상호스트로 리버스 프록시 해줄 수 있게 되었고, End to End 암호화를 달성할 수 있었습니다.
+
+```nginx
+server {
+        listen 443 ssl;
+        server_name code.pusan.ac.kr;
+        ...
+        location / {
+                proxy_pass                          https://prod-service; # https 프록시
+                proxy_set_header  Host              $http_host;
+                proxy_set_header  X-Real-IP         $remote_addr;
+                proxy_set_header  X-Forwarded-For   $proxy_add_x_forwarded_for;
+                proxy_set_header  X-Forwarded-Proto $scheme;
+        }
+        ...
 ```
