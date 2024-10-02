@@ -192,11 +192,17 @@ sed -i "s/__SERVER_NAME__/$SERVER_NAME/g" /app/deploy/nginx/nginx.conf
 
 리눅스 명령어 중에 문자열을 교체하는 명령인 sed를 찾게 되었고, 위 과정처럼 동적으로 server\_name을 변경할 수 있었습니다.
 
-
+> `sed`: 스트림 편집기(Stream Editor)의 약자로, 텍스트 파일을 수정하는 데 사용되는 Unix 유틸리티
+>
+> `"s/`**`__SERVER_NAME__`**`/$SERVER_NAME/g"`
+>
+> `__SERVER_NAME__`: 찾을 패턴
+>
+> `$SERVER_NAME`: 치환할 내용
 
 ### 문제 해결 결과
 
-위 과정을 통해 인그레스 트래픽을 각각의 가상호스트로 리버스 프록시 해줄 수 있게 되었고, End to End 암호화를 달성할 수 있었습니다.
+위 과정을 통해 인그레스 트래픽을 암호화된 상태로 리버스 프록싱 할 수 있게 되었고, End to End 암호화를 달성할 수 있었습니다.
 
 ```nginx
 server {
