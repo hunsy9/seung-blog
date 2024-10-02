@@ -27,8 +27,6 @@
 
 ## 코드플레이스 <a href="#code-place" id="code-place"></a>
 
-* [💔 트러블슈팅 기록](code-place/troubleshooting/README.md)
-  * [Time Zone 변경과 관련된 트러블슈팅](code-place/troubleshooting/time-zone.md)
 * [🧩 개발 기록](code-place/dev/README.md)
   * [더 나은 CI 파이프라인을 위한 고민과 해결 과정](code-place/dev/ci.md)
   * [E2EE(종단 간 암호화)를 달성하기 위한 고민과 해결 과정](code-place/dev/e2ee.md)
