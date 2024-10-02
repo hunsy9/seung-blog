@@ -28,6 +28,6 @@
 ***
 
 * [부산대학교 코드플레이스 개발 기록](undefined/README.md)
-  * [런칭 이후 배포 과정에서 겪은 문제와 해결 과정](undefined/undefined.md)
+  * [더 나은 CI 파이프라인을 위한 고민과 해결 과정](undefined/ci.md)
   * [Time Zone 변경과 관련된 트러블슈팅](undefined/time-zone.md)
   * [E2EE(종단 간 암호화)를 달성하기 위한 고민과 해결 과정](undefined/e2ee.md)
