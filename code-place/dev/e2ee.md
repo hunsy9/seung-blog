@@ -14,7 +14,7 @@ description: 가용할 수 있는 물리 인프라 자원은 워크스테이션 
 
 <figure><img src="../../.gitbook/assets/스크린샷 2024-10-02 오전 1.54.49.png" alt="" width="295"><figcaption><p>각 서비스 환경으로 리버스 프록시</p></figcaption></figure>
 
-위처럼 80/443 포트에 바인딩 해놓은 인그레스 Nginx에서 들어오는 트래픽을&#x20;
+위처럼 80/443 포트에 바인딩 해놓은 Nginx에서 들어오는 트래픽을&#x20;
 
 2개의 가상 호스트의 서비스들로 **리버스 프록싱하는 작업이 필요**하였습니다.
 
@@ -26,7 +26,7 @@ description: 가용할 수 있는 물리 인프라 자원은 워크스테이션 
 
 초기엔 팀이 개발한 프론트엔드 컨테이너를 서비스 명만 바꾸어(ex. code-place-test, code-place-prod),
 
-서로 다른 두 포트를 할당해 서비스를 생성하고, 인그레스 트래픽을 각 업스트림 서비스 컨테이너로 분배하려고 하였습니다.
+서로 다른 두 포트를 할당해 서비스를 생성하고, 80/443 포트로 들어오는 트래픽을 각 업스트림 서비스 컨테이너로 분배하려고 하였습니다.
 
 
 
@@ -61,7 +61,7 @@ End-To-End 암호화를 달성하기 위해선
 # nginx.conf - 운영
 server {
       listen 1443 ssl default_server;
-      server_name code.pusan.ac.kr;
+      server_name code.pusan.ac.kr; # 운영 도메인
       http2 on;
       autoindex_localtime on;
 
@@ -72,7 +72,7 @@ server {
 # nginx.conf - 테스트
 server {
       listen 1443 ssl default_server;
-      server_name copl-dev.site;
+      server_name copl-dev.site; # 테스트 도메인
       http2 on;
       autoindex_localtime on;
 
@@ -99,7 +99,7 @@ server {
 \
 위 생각을 실현하기 위해 먼저 프론트엔드 nginx 구성파일부터 개선해보았습니다.
 
-1\. 프론트엔드 nginx 구성파일에서, **server\_name 디렉티브를 \_\_SERVER\_NAME\_\_으로 설정**(변수화)
+1\. 프론트엔드 nginx 구성파일에서, **server\_name 디렉티브를 \_\_SERVER\_NAME\_\_으로 설정**
 
 ```nginx
 # nginx.conf
@@ -171,8 +171,7 @@ ENTRYPOINT ["/app/deploy/entrypoint.sh"] # entrypoint 스크립트 실행
 ```
 {% endcode %}
 
-이는 컨테이너 실행 시  쉘스크립트에서 이루어질 작업이었기 때문에\
-
+이는 컨테이너 실행 시  쉘스크립트에서 이루어질 작업이었기 때문에
 
 {% code title="entrypoint.sh" %}
 ```sh
@@ -202,7 +201,7 @@ sed -i "s/__SERVER_NAME__/$SERVER_NAME/g" /app/deploy/nginx/nginx.conf
 
 ### 문제 해결 결과
 
-위 과정을 통해 인그레스 트래픽을 암호화된 상태로 리버스 프록싱 할 수 있게 되었고, End to End 암호화를 달성할 수 있었습니다.
+위 과정을 통해 트래픽을 암호화된 상태로 리버스 프록시 할 수 있게 되었고, End to End 암호화를 달성할 수 있었습니다.
 
 ```nginx
 server {
