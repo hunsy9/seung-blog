@@ -13,8 +13,6 @@ description: 변경사항이 감지된 컴포넌트만 조건부로 빌드하고
 따라서 지금 현재 프로젝트의 구조는 아래와 같은데요.
 
 ```sh
-Code Place 프로젝트
-.
 ├── frontend # 프론트엔드 디렉토리
 ├── backend # Django API 서버 디렉토리
 ├── scheduler # Django APScheduler 디렉토리
@@ -104,11 +102,11 @@ ci-frontend:
 
 저희 팀은 **Git Flow**를 적용하여 **develop 브랜치를 분기한 release 브랜치**를 만들고,&#x20;
 
-이를 **main에 병합 시 CI 로직과, 릴리스가 자동으로 실행**되는 게 목표였습니다.
+이를 **main에 병합 시 CI 파이프라인과, 릴리스가 자동으로 실행**되는 게 목표였습니다.
 
 
 
-아래 코드를 보면, create-release라는 새로운 job을 만들어 각 컴포넌트별 ci 파이프라인에 의존하도록 하였는데요.
+아래 코드를 보면, create-release라는 새로운 job을 만들어 각 컴포넌트별 CI 파이프라인에 의존하도록 하였는데요.
 
 ```yaml
 create-release:

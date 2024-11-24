@@ -15,9 +15,7 @@
 ## 📐 Algorithm
 
 * [개론 정리 공간](algorithm/undefined/README.md)
-  * [배열과 문자열](algorithm/undefined/undefined/README.md)
-    * [투 포인터](algorithm/undefined/undefined/undefined.md)
-    * [슬라이딩 윈도우](algorithm/undefined/undefined/undefined-1.md)
+  * [배열과 문자열](algorithm/undefined/undefined.md)
 * [Hashing](algorithm/hashing/README.md)
   * [\[LeetCode\] First Letter to Appear Twice](algorithm/hashing/leetcode-first-letter-to-appear-twice.md)
 * [Two Pointer](algorithm/two-pointer/README.md)
