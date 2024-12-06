@@ -8,10 +8,6 @@
 
 ## ☁️ Cloud
 
-* [Cloud Native](cloud/cloud-native/README.md)
-  * [사설 레지스트리를 구축한 이유](cloud/cloud-native/undefined.md)
-  * [HTTPS Harbor 사설 레지스트리 구축하기](cloud/cloud-native/https-harbor.md)
-  * [](cloud/cloud-native/undefined-1.md)
 * [자취방 클라우드](cloud/undefined.md)
   * [노트북으로 리눅스 서버 구축하기](cloud/undefined/undefined.md)
   * [홈서버 네트워크 기초 구성하기](cloud/undefined/undefined-1.md)
@@ -30,5 +26,7 @@
 ## 코드플레이스 <a href="#code-place" id="code-place"></a>
 
 * [🧩 개발 기록](code-place/dev/README.md)
+  * [사설 레지스트리를 구축한 이유](code-place/dev/undefined.md)
+  * [HTTPS Harbor 사설 레지스트리 구축하기](code-place/dev/https-harbor.md)
   * [더 나은 CI 파이프라인을 위한 고민과 해결 과정](code-place/dev/ci.md)
-  * [동적 환경 변수를 활용한 종단 간 암호화 인프라 구축하기](code-place/dev/undefined.md)
+  * [동적 환경 변수를 활용한 종단 간 암호화 인프라 구축하기](code-place/dev/undefined-1.md)
