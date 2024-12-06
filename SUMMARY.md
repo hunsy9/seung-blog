@@ -1,18 +1,18 @@
 # Table of contents
 
 * [hunsy's log](README.md)
-* [BlockChain](blockchain/README.md)
+* [블록체인](blockchain/README.md)
   * [이더리움 블록체인 노드를 메인넷에 연결해보자](blockchain/undefined.md)
   * [이더리움 로컬 네트워크 구성하기](blockchain/undefined-1.md)
   * [로컬 네트워크에 스마트 컨트랙트를 배포해보자](blockchain/undefined-2.md)
 
-## ☁️ Cloud
+## 🤣 재미로 해보는 것 <a href="#for_fun" id="for_fun"></a>
 
-* [자취방 클라우드](cloud/undefined.md)
-  * [노트북으로 리눅스 서버 구축하기](cloud/undefined/undefined.md)
-  * [홈서버 네트워크 기초 구성하기](cloud/undefined/undefined-1.md)
+* [자취방 클라우드](for_fun/undefined/README.md)
+  * [노트북으로 리눅스 서버 구축하기](for_fun/undefined/undefined.md)
+  * [홈서버 네트워크 기초 구성하기](for_fun/undefined/undefined-1.md)
 
-## 📐 Algorithm
+## 📐 알고리즘 <a href="#algorithm" id="algorithm"></a>
 
 * [개론 정리 공간](algorithm/undefined/README.md)
   * [배열과 문자열](algorithm/undefined/undefined.md)
