@@ -30,21 +30,21 @@ layout:
 
 나는 백엔드 개발자를 지망하기 때문에
 
-각종 WAS(Spring boot, Django) 및 DB(MariaDB, PostgreSQL)와 웹서버를 Docker compose로 패키징하여 배포하는 일이 많았다.
+각종 WAS 및 DB와 웹서버를 Docker compose로 배포하는 일이 많았다.
 
 하지만 azure나 aws를 사용하면서 느낀 점은,
 
 교육 요금제나 프리티어를 이용해서 무료로 사용할 수 있는 사양 한도는 보통 **논리 CPU 1개 \~ 2개, 메모리 1GB \~ 4GB 정도**의 수준으로 사용할 수 밖에 없었다.
 
-Spring boot에 로그인 기능과 회원가입 기능정도만 추가하여 Dockerize하여 컨테이너로 실행을 했을 때,
+Spring boot에 로그인 기능과 회원가입 기능정도만 추가하여 컨테이너로 실행을 했을 때,
 
 <figure><img src="../../.gitbook/assets/dockerstats.png" alt=""><figcaption><p>Docker Stats</p></figcaption></figure>
 
-위 이미지처럼 기본적으로 300MB 이상의 메모리를 사용 중인 것을 볼 수 있고 퍼블릭 클라우드의 무료 요금제로는 턱없이 부족하다는 생각이 들었다.
+위 이미지처럼 기본적으로 300MB 이상의 메모리를 사용 중인 것을 볼 수 있고 여기에 이것저것 서비스에 들어가는 컴포넌트들을 올리면, 퍼블릭 클라우드의 무료 요금제로는 턱없이 부족하다는 생각이 들었다.
 
 내가 가지고 있는 노트북은 CPU 8코어, RAM 16GB/Storage 512GB로
 
-azure나 aws를 이정도 사양을 이용하려면 월 121달러를 지불해야 한다는 계산이 나온다.
+azure나 aws를 이 정도 사양으로  이용하려면 월 121달러를 지불해야 한다는 계산이 나온다.
 
 <figure><img src="../../.gitbook/assets/price.png" alt=""><figcaption><p>AWS EC2( c5.2xlarge )</p></figcaption></figure>
 
