@@ -3,8 +3,6 @@
 * [hunsy's log](README.md)
 * [블록체인](blockchain/README.md)
   * [이더리움 블록체인 노드를 메인넷에 연결해보자](blockchain/undefined.md)
-  * [이더리움 로컬 네트워크 구성하기](blockchain/undefined-1.md)
-  * [로컬 네트워크에 스마트 컨트랙트를 배포해보자](blockchain/undefined-2.md)
 
 ## 🤣 재미로 해보는 것 <a href="#for_fun" id="for_fun"></a>
 
